@@ -26,8 +26,10 @@ public class ControllerBooking {
 	
 	@Autowired
 	PrenotazioneRepository prenotazioneRepository;
+	
 	@Autowired
 	PersonaRepository personaRepository;
+	
 	@Autowired
 	PazienteRepository pazienteRepository;
 	
