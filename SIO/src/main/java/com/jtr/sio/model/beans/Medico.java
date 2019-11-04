@@ -28,12 +28,11 @@ public class Medico {
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "medico")
 	private CapoReparto capoReparto;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "medico")
-	private List<Esame> esame;
-	
 	@OneToOne(fetch = FetchType.LAZY)
 	private Personale personale;
 	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "prenotazione")
+	private List<Visita> visita;
 	
 	public Medico() {
 	}
@@ -83,16 +82,14 @@ public class Medico {
 		this.reparto = reparto;
 	}
 
-	public List<Esame> getEsame() {
-		return esame;
+	public List<Visita> getVisita() {
+		return visita;
 	}
 
-	public void setEsame(List<Esame> esame) {
-		this.esame = esame;
+	public void setVisita(List<Visita> visita) {
+		this.visita = visita;
 	}
 
-	
-	
 	
 
 }

@@ -19,19 +19,15 @@ public class Esame {
 	private long id_esame;
 	private String tipo;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Medico medico;
-	
-	
 	public Esame() {
 		super();
 	}
 	
 	
-	public Esame(String tipo, Medico medico) {
+	public Esame(String tipo) {
 		super();
 		this.tipo = tipo;
-		this.medico = medico;
+
 	}
 	
 	public long getId_esame() {
@@ -47,16 +43,6 @@ public class Esame {
 		this.tipo = tipo;
 	}
 
-
-	public Medico getMedico() {
-		return medico;
-	}
-
-
-	public void setMedico(Medico medico) {
-		this.medico = medico;
-	}
-	
 	
 	
 }
