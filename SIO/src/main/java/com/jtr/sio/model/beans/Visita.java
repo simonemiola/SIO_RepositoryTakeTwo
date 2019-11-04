@@ -20,6 +20,9 @@ public class Visita {
 	@OneToOne(fetch = FetchType.LAZY)
 	private Medico medico;
 	
+	@OneToOne(fetch = FetchType.LAZY)
+	private Prenotazione prenotazione;
+	
 	public Visita() {
 		super();
 	}

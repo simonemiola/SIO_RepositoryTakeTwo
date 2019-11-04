@@ -25,12 +25,35 @@ public class Prenotazione {
 	@OneToOne(fetch = FetchType.LAZY)
 	private Ricetta ricetta;
 	
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "prenotazione")
+	private Visita visita;
+	
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "prenotazione")
+	private Ricovero ricovero;
+	
 	
 	public Prenotazione(Paziente paziente, Ricetta ricetta) {
 		super();
 		this.paziente = paziente;
 		this.ricetta = ricetta;
 	}
+	
+	
+	public Prenotazione(Paziente paziente, Ricetta ricetta, Visita visita) {
+		super();
+		this.paziente = paziente;
+		this.ricetta = ricetta;
+		this.visita = visita;
+	}
+
+	
+	public Prenotazione(Paziente paziente, Ricetta ricetta, Ricovero ricovero) {
+		super();
+		this.paziente = paziente;
+		this.ricetta = ricetta;
+		this.ricovero = ricovero;
+	}
+
 
 	public long getId_prenotazione() {
 		return id_prenotazione;
@@ -54,6 +77,22 @@ public class Prenotazione {
 
 	public void setRicetta(Ricetta ricetta) {
 		this.ricetta = ricetta;
+	}
+
+	public Visita getVisita() {
+		return visita;
+	}
+
+	public void setVisita(Visita visita) {
+		this.visita = visita;
+	}
+
+	public Ricovero getRicovero() {
+		return ricovero;
+	}
+
+	public void setRicovero(Ricovero ricovero) {
+		this.ricovero = ricovero;
 	}
 
 	

@@ -25,6 +25,9 @@ public class Ricovero {
 	@OneToOne(fetch = FetchType.LAZY)
 	private Medico medico;
 	
+	@OneToOne(fetch = FetchType.LAZY)
+	private Prenotazione prenotazione;
+	
 	
 	public Ricovero(LocalDate data_ricovero, LocalDate data_dimissione, String malattia, String tipo_cura,
 			Medico medico) {
