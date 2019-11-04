@@ -1,9 +1,11 @@
 package com.jtr.sio.model.beans;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,7 +16,25 @@ public class Visita {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id_visita;
 	private String tipo;
-	private long id_medico;
+
+	@OneToOne(fetch = FetchType.LAZY)
+	private Medico medico;
+	
+	public Visita() {
+		super();
+	}
+
+	public Visita(String tipo, Medico medico) {
+		super();
+		this.tipo = tipo;
+		this.medico = medico;
+	}
+	public Medico getMedico() {
+		return medico;
+	}
+	public void setMedico(Medico medico) {
+		this.medico = medico;
+	}
 	public long getId_visita() {
 		return id_visita;
 	}
@@ -27,18 +47,7 @@ public class Visita {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	public long getId_medico() {
-		return id_medico;
-	}
-	public void setId_medico(long id_medico) {
-		this.id_medico = id_medico;
-	}
-	public Visita(String tipo, long id_medico) {
-		this.tipo = tipo;
-		this.id_medico = id_medico;
-	}
-	public Visita() {
-	}
+
 	
 	
 	

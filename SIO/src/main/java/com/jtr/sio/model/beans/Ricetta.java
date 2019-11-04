@@ -1,9 +1,9 @@
 package com.jtr.sio.model.beans;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -11,10 +11,13 @@ import javax.persistence.Table;
 public class Ricetta {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long num_ricetta;
 	private String tipo;
 	private String tipo_specializzato;
+	
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "ricetta")
+	private Prenotazione prenotazione;
+	
 	public Ricetta() {
 	}
 	public Ricetta(long num_ricetta, String tipo, String tipo_specializzato) {
@@ -40,5 +43,13 @@ public class Ricetta {
 	public void setTipo_specializzato(String tipo_specializzato) {
 		this.tipo_specializzato = tipo_specializzato;
 	}
+	public Prenotazione getPrenotazione() {
+		return prenotazione;
+	}
+	public void setPrenotazione(Prenotazione prenotazione) {
+		this.prenotazione = prenotazione;
+	}
+	
+	
 
 }

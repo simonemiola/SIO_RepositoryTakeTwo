@@ -1,9 +1,11 @@
 package com.jtr.sio.model.beans;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -11,19 +13,25 @@ import javax.persistence.Table;
 public class Credenziali {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String username;
 	private String password;
-	private String matricola;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	private Personale personale;
 	
 	
 	public Credenziali() {
 	}
-	public Credenziali(String username, String password, String matricola) {
+
+	
+	public Credenziali(String username, String password, Personale personale) {
+		super();
 		this.username = username;
 		this.password = password;
-		this.matricola = matricola;
+		this.personale = personale;
 	}
+
+
 	public String getUsername() {
 		return username;
 	}
@@ -36,12 +44,18 @@ public class Credenziali {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getMatricola() {
-		return matricola;
+
+
+	public Personale getPersonale() {
+		return personale;
 	}
-	public void setMatricola(String matricola) {
-		this.matricola = matricola;
+
+
+	public void setPersonale(Personale personale) {
+		this.personale = personale;
 	}
+	
+	
 	
 	
 

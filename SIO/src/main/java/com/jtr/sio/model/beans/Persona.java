@@ -3,9 +3,11 @@ package com.jtr.sio.model.beans;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,13 +15,16 @@ import javax.persistence.Table;
 public class Persona {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String cf;
 	private String nome;
 	private String cognome;
 	private String residenza;
 	private LocalDate data_nascita;
 	
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "persona")
+	private Personale personale;
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "persona")
+	private Paziente paziente;
 	
 	public Persona() {
 	}
@@ -60,6 +65,18 @@ public class Persona {
 	public void setData_nascita(LocalDate data_nascita) {
 		this.data_nascita = data_nascita;
 	}
+	public Personale getPersonale() {
+		return personale;
+	}
+	public void setPersonale(Personale personale) {
+		this.personale = personale;
+	}
+	public Paziente getPaziente() {
+		return paziente;
+	}
+	public void setPaziente(Paziente paziente) {
+		this.paziente = paziente;
+	}
 	
-
+	
 }

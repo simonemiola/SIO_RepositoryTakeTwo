@@ -1,9 +1,11 @@
 package com.jtr.sio.model.beans;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,14 +16,19 @@ public class Ausiliario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id_ausiliario;
 	private String ruolo;
-	private String matricola;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	private Personale personale;
 	
 	public Ausiliario() {
 	}
-	public Ausiliario(String ruolo, String matricola) {
+
+	public Ausiliario(String ruolo, Personale personale) {
+		super();
 		this.ruolo = ruolo;
-		this.matricola = matricola;
+		this.personale = personale;
 	}
+
 	public long getId_ausiliario() {
 		return id_ausiliario;
 	}
@@ -34,12 +41,17 @@ public class Ausiliario {
 	public void setRuolo(String ruolo) {
 		this.ruolo = ruolo;
 	}
-	public String getMatricola() {
-		return matricola;
+
+	public Personale getPersonale() {
+		return personale;
 	}
-	public void setMatricola(String matricola) {
-		this.matricola = matricola;
+
+	public void setPersonale(Personale personale) {
+		this.personale = personale;
 	}
+	
+	
+
 	
 
 }

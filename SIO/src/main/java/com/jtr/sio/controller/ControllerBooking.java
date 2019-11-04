@@ -26,10 +26,8 @@ public class ControllerBooking {
 	
 	@Autowired
 	PrenotazioneRepository prenotazioneRepository;
-	
 	@Autowired
 	PersonaRepository personaRepository;
-	
 	@Autowired
 	PazienteRepository pazienteRepository;
 	
@@ -39,7 +37,7 @@ public class ControllerBooking {
 			/*@RequestParam("dataNascita") LocalDate dataNascita*/ @RequestParam(name="numeroRicetta") long numeroRicetta, 
 			@RequestParam(name="tipoVisita") String tipoVisita, @RequestParam(name="esame") String esame) {
 		
-
+			
 		return "index";
 	}
 }

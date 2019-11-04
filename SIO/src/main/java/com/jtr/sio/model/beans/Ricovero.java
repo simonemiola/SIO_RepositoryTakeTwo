@@ -3,9 +3,11 @@ package com.jtr.sio.model.beans;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,7 +21,31 @@ public class Ricovero {
 	private LocalDate data_dimissione;
 	private String malattia;
 	private String tipo_cura;
-	private long id_medico;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	private Medico medico;
+	
+	
+	public Ricovero(LocalDate data_ricovero, LocalDate data_dimissione, String malattia, String tipo_cura,
+			Medico medico) {
+		super();
+		this.data_ricovero = data_ricovero;
+		this.data_dimissione = data_dimissione;
+		this.malattia = malattia;
+		this.tipo_cura = tipo_cura;
+		this.medico = medico;
+	}
+	
+	
+	public Ricovero(LocalDate data_ricovero, LocalDate data_dimissione, String malattia, String tipo_cura) {
+		super();
+		this.data_ricovero = data_ricovero;
+		this.data_dimissione = data_dimissione;
+		this.malattia = malattia;
+		this.tipo_cura = tipo_cura;
+	}
+
+
 	public long getId_ricovero() {
 		return id_ricovero;
 	}
@@ -50,22 +76,17 @@ public class Ricovero {
 	public void setTipo_cura(String tipo_cura) {
 		this.tipo_cura = tipo_cura;
 	}
-	public long getId_medico() {
-		return id_medico;
+
+
+	public Medico getMedico() {
+		return medico;
 	}
-	public void setId_medico(long id_medico) {
-		this.id_medico = id_medico;
+
+
+	public void setMedico(Medico medico) {
+		this.medico = medico;
 	}
-	public Ricovero(LocalDate data_ricovero, LocalDate data_dimissione, String malattia, String tipo_cura,
-			long id_medico) {
-		this.data_ricovero = data_ricovero;
-		this.data_dimissione = data_dimissione;
-		this.malattia = malattia;
-		this.tipo_cura = tipo_cura;
-		this.id_medico = id_medico;
-	}
-	public Ricovero() {
-	}
+
 	
 
 }
